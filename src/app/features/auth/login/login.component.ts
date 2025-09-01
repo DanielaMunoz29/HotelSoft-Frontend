@@ -41,4 +41,3 @@ export class LoginComponent {
     alert('Iniciar sesión con Google');
   }
 }
-

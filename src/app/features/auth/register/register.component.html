@@ -1,22 +1,121 @@
-<div class="container mt-5">
-  <h2>Registro de Usuario</h2>
-  <form>
-    <div class="mb-3">
-      <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" id="nombre" class="form-control" placeholder="Ingresa tu nombre">
-    </div>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="login-wrapper">
+    <!-- Imagen izquierda -->
+    <div class="login-image"></div>
 
-    <div class="mb-3">
-      <label for="email" class="form-label">Correo</label>
-      <input type="email" id="email" class="form-control" placeholder="Ingresa tu correo">
-    </div>
+    <!-- Formulario derecha -->
+    <div class="login-form-container">
+      <div class="login-form">
+        <h2 class="text-center mb-4">Registro de Usuario</h2>
 
-    <div class="mb-3">
-      <label for="password" class="form-label">Contraseña</label>
-      <input type="password" id="password" class="form-control" placeholder="Crea una contraseña">
-    </div>
+        <!-- Cédula -->
+        <div class="mb-3">
+          <label for="cedula" class="form-label">Cédula</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+            <input type="text" id="cedula" class="form-control" placeholder="Ingresa tu cédula" formControlName="cedula">
+          </div>
+          @if(registerForm.controls['cedula'].invalid && registerForm.controls['cedula'].touched) {
+            <div class="text-danger">La cédula es requerida y debe tener mínimo 6 dígitos</div>
+          }
+        </div>
 
-    <button class="btn btn-primary">Registrarse</button>
-  </form>
+        <!-- Nombres -->
+        <div class="mb-3">
+          <label for="nombres" class="form-label">Nombres</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input type="text" id="nombres" class="form-control" placeholder="Ingresa tus nombres" formControlName="nombres">
+          </div>
+          @if(registerForm.controls['nombres'].invalid && registerForm.controls['nombres'].touched) {
+            <div class="text-danger">Los nombres son requeridos</div>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+            <input type="email" id="email" class="form-control" placeholder="Ingresa tu correo" formControlName="email">
+          </div>
+          @if(registerForm.controls['email'].invalid && registerForm.controls['email'].touched) {
+            <div class="text-danger">Debe ser un correo válido</div>
+          }
+        </div>
+
+        <!-- Teléfono -->
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Número de Teléfono</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+            <input type="text" id="telefono" class="form-control" placeholder="Ingresa tu teléfono" formControlName="telefono">
+          </div>
+          @if(registerForm.controls['telefono'].invalid && registerForm.controls['telefono'].touched) {
+            <div class="text-danger">El teléfono es requerido y debe contener solo números</div>
+          }
+        </div>
+
+        <!-- Contraseña -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+            <input type="password" id="password" class="form-control" placeholder="Crea una contraseña" formControlName="password">
+          </div>
+          @if(registerForm.controls['password'].invalid && registerForm.controls['password'].touched) {
+            <div class="text-danger">La contraseña debe tener mínimo 6 caracteres</div>
+          }
+        </div>
+
+        <!-- Checkbox de términos -->
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="terminos" formControlName="terminos">
+          <label class="form-check-label" for="terminos">
+            Acepto los términos y condiciones del tratamiento de datos
+          </label>
+          @if(registerForm.controls['terminos'].invalid && registerForm.controls['terminos'].touched) {
+            <div class="text-danger">Debes aceptar los términos y condiciones</div>
+          }
+        </div>
+
+        <!-- Botón Registrarse -->
+        <div class="d-grid mb-3">
+          <button type="submit"
+                  class="btn btn-primary"
+                  [disabled]="!registerForm.get('terminos')?.value || registerForm.invalid">
+            Registrarse
+          </button>
+        </div>
+
+        <!-- Link para volver a login -->
+        <div class="text-center">
+          <a class="nav-link" routerLink="/login">¿Ya tienes cuenta? Inicia Sesión</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modal de Registro Exitoso -->
+<div class="modal fade" id="exitoModal" tabindex="-1" aria-labelledby="exitoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0 text-center">
+        <h5 class="modal-title w-100" id="exitoModalLabel">
+          <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+        </h5>
+      </div>
+      <div class="modal-body text-center">
+        <h4 class="text-success mb-3">¡Registro Exitoso!</h4>
+        <p class="mb-4">Tu cuenta ha sido creada correctamente. Ya puedes iniciar sesión con tus credenciales.</p>
+        <div class="d-grid">
+          <button type="button" class="btn btn-success btn-lg" (click)="irALogin()">
+            <i class="bi bi-box-arrow-in-right me-2"></i>
+            Ir a Iniciar Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-

@@ -1,9 +1,10 @@
 :host {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;       /* Ocupa toda la pantalla */
+  align-items: flex-start; /* Evita centrarlo demasiado abajo */
+  min-height: 100vh; /* Ocupa toda la pantalla */
   background-color: #f8f9fa;
+  padding-top: 50px; /* Ajusta este valor según lo alto de tu encabezado */
 }
 
 .login-wrapper {
@@ -18,7 +19,7 @@
 
 .login-image {
   flex: 1;
-  background: url('/HotelSoftLogin.png') no-repeat center center;
+  background: url("/HotelSoftLogin.png") no-repeat center center;
   background-size: cover;
 }
 
