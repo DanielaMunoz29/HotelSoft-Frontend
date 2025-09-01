@@ -1,0 +1,133 @@
+.custom-carousel {
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Contenedor del carousel */
+.carousel-content {
+  position: relative;
+  height: 500px;
+}
+
+/* Imágenes del carousel */
+.custom-carousel img {
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Caption personalizado */
+.carousel-caption-custom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: white;
+  padding: 60px 20px 30px;
+  text-align: center;
+}
+
+.carousel-caption-custom h5 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.carousel-caption-custom p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.carousel-caption-custom .price {
+  color: #4a7c59;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.carousel-caption-custom .btn {
+  font-size: 1.1rem;
+  padding: 10px 30px;
+  font-weight: 600;
+  background-color: #4a7c59;
+  border-color: #4a7c59;
+  transition: all 0.3s ease;
+}
+
+.carousel-caption-custom .btn:hover {
+  background-color: #2d5016;
+  border-color: #2d5016;
+  transform: scale(1.05);
+}
+
+/* Controles del carousel */
+.custom-carousel .carousel-control-prev,
+.custom-carousel .carousel-control-next {
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(74, 124, 89, 0.8);
+  border-radius: 50%;
+  border: none;
+}
+
+.custom-carousel .carousel-control-prev {
+  left: 20px;
+}
+
+.custom-carousel .carousel-control-next {
+  right: 20px;
+}
+
+.custom-carousel .carousel-control-prev:hover,
+.custom-carousel .carousel-control-next:hover {
+  background-color: rgba(74, 124, 89, 1);
+}
+
+/* Indicadores personalizados */
+.custom-carousel .carousel-indicators {
+  bottom: 20px;
+}
+
+.custom-carousel .carousel-indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.5);
+  border: 2px solid #4a7c59;
+}
+
+.custom-carousel .carousel-indicators button.active {
+  background-color: #4a7c59;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel-content {
+    height: 400px;
+  }
+
+  .custom-carousel img {
+    height: 400px;
+  }
+
+  .carousel-caption-custom h5 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption-custom .price {
+    font-size: 1.4rem;
+  }
+
+  .carousel-caption-custom .btn {
+    font-size: 1rem;
+    padding: 8px 20px;
+  }
+}
