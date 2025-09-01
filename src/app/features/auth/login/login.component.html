@@ -1,0 +1,76 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="login-wrapper">
+    <!-- Imagen izquierda -->
+    <div class="login-image"></div>
+
+    <!-- Formulario derecha -->
+    <div class="login-form-container">
+      <div class="login-form">
+        <h2 class="text-center mb-4">Iniciar Sesión</h2>
+        <!-- Usuario -->
+        <div class="mb-3">
+          <label for="usuario" class="form-label">Usuario</label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="bi bi-person-fill"></i>
+            </span>
+            <input type="text" id="usuario" class="form-control" placeholder="Usuario" formControlName="usuario">
+          </div>
+          @if (this.loginForm.controls["usuario"].invalid && (usuario.dirty || usuario.touched)) {
+            <div class="text-danger">
+              @if (usuario.hasError('required')) {
+                <div>
+                  Email es requerido
+                </div>
+              }
+              @if (usuario.hasError('email')) {
+                <div>
+                  Email debe de tener un formato valido
+                </div>
+              }
+              @if (usuario.hasError('minlength')) {
+                <div>
+                  La contraseña debe de tener minimo 6 caracteres
+                </div>
+              }
+              @if (usuario.hasError('forbiddenName')) {
+                <div>
+                  Name cannot be Bob.
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Contraseña -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="bi bi-lock-fill"></i>
+            </span>
+            <input type="password" id="password" class="form-control" placeholder="Contraseña" formControlName="password">
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="d-flex justify-content-between mb-3">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+          <a class="nav-link" routerLink="/register">Registrarse</a>
+        </div>
+
+        <!-- Botón Ingresar -->
+        <div class="d-grid mb-3">
+          <button type="submit" (click)="login()" class="btn btn-primary">Ingresar</button>
+        </div>
+
+        <!-- Botón Google -->
+        <div class="d-grid">
+          <button type="button" class="btn btn-outline-dark" (click)="loginGoogle()">
+            <i class="bi bi-google me-2"></i> Continuar con Google
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

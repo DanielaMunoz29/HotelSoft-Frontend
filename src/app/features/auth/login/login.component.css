@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;       /* Ocupa toda la pantalla */
+  background-color: #f8f9fa;
+}
+
+.login-wrapper {
+  display: flex;
+  width: 900px; /* Ancho máximo del contenedor */
+  height: 550px; /* Alto fijo del contenedor */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.login-image {
+  flex: 1;
+  background: url('/HotelSoftLogin.png') no-repeat center center;
+  background-size: cover;
+}
+
+.login-form-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 350px;
+}
