@@ -17,11 +17,27 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.registerForm = this.fb.group({
-      cedula: ['', [Validators.required, Validators.minLength(6)]],
-      nombres: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      cedula: ['', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.pattern('^[0-9]+$') // Solo números
+      ]],
+      nombres: ['', [
+        Validators.required,
+        Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$') // Solo letras y espacios
+      ]],
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
+      telefono: ['', [
+        Validators.required,
+        Validators.pattern('^[0-9]+$') // Solo números
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(6)
+      ]],
       terminos: [false, [Validators.requiredTrue]]
     });
   }
@@ -31,8 +47,8 @@ export class RegisterComponent {
       console.log('Formulario de registro:', this.registerForm.value);
       // Mostrar modal de éxito
       this.mostrarModalExito();
-
     } else {
+      // Marca todos los campos como tocados para mostrar errores
       this.registerForm.markAllAsTouched();
     }
   }
